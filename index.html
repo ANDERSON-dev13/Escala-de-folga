@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Escala Offshore</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Gerador de Escala Offshore</h1>
+    </header>
+    <main>
+        <!-- Formulário para entrada de dados -->
+        <section class="form-section">
+            <label for="startDate">Data do Embarque:</label>
+            <input type="date" id="startDate" required>
+        
+            <label for="scale">Selecione a Escala:</label>
+            <select id="scale">
+                <option value="14x14">14 x 14</option>
+                <option value="14x21">14 x 21</option>
+                <option value="28x28">28 x 28</option>
+                <option value="35x35">35 x 35</option>
+                <option value="60x60">60 x 60</option>
+            </select> 
+
+            <button id="generateBtn">Gerar Escala</button>
+
+            <!-- Legenda para os dias de trabalho e folga -->
+            <div class="legend">
+                <div class="legend-item">
+                    <span class="color-box work"></span>
+                    <span>Embarque</span>
+                </div>
+                <div class="legend-item">
+                    <span class="color-box off"></span>
+                    <span>Folga</span>
+                </div>
+            </div>      
+        </section>  
+
+        <!-- Seção para exibir o calendário -->
+        <section class="calendar-section">
+            <h2>Calendário Anual</h2>
+            <!-- Controles do carrossel -->
+            <div id="carousel-controls">
+                <button id="prevBtn">Voltar</button>
+                <button id="nextBtn">Próximo</button>
+            </div>
+            <!-- Container do carrossel -->
+            <div id="carousel-container">
+                <div id="calendar-carousel">
+                    <!-- Os meses serão gerados dinamicamente aqui -->
+                </div>
+            </div>
+        </section>                        
+    </main>
+    <footer>
+        <p>Desenvolvido por Anderson Araujo</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

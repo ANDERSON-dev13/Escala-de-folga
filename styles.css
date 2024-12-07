@@ -1,0 +1,199 @@
+/* Estilo Geral */
+body {
+    background-color: #00FFFF; /* Fundo Aqua */
+    font-family: Arial, sans-serif;
+    color: #DCDCDC; /* Gainsboro */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4682B4; /* SteelBlue */
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+main {
+    padding: 20px;
+}
+
+/* Seção do Formulário */
+.form-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #363636; /* Grey21 */
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 1.2em;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid #6959CD; /* SlateBlue3 */
+}
+
+button {
+    background-color: #4682B4; /* SteelBlue */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #6959CD; /* SlateBlue3 */
+}
+
+/* Legenda */
+.legend {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #DCDCDC;
+    border-radius: 3px;
+}
+
+.color-box.work {
+    background-color: red; /* Cor para Embarque */
+}
+
+.color-box.off {
+    background-color: green; /* Cor para Folga */
+}
+
+/* Calendário e Carrossel */
+.calendar-section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #363636; /* Grey21 */
+    border-radius: 10px;
+}
+
+#carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+#carousel-controls button {
+    background-color: #4682B4; /* SteelBlue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#carousel-controls button:hover {
+    background-color: #6959CD; /* SlateBlue3 */
+}
+
+#carousel-container {
+    overflow: hidden;
+    width: 100%;
+    margin: 20px 0;
+    position: relative;
+}
+
+#calendar-carousel {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    will-change: transform;
+}
+
+.month-section {
+    flex: 0 0 100%; /* Cada mês ocupa 100% da largura do container */
+    box-sizing: border-box;
+    padding: 15px;
+    background-color: #363636; /* Grey21 */
+    border-radius: 10px;
+    min-height: 400px; /* Garante altura mínima */
+}
+
+.month-section h3 {
+    color: #DCDCDC; /* Gainsboro */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.month-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* Garante 7 colunas uniformes */
+    gap: 5px; /* Espaçamento entre as células */
+}
+
+.week-day {
+    font-weight: bold;
+    text-align: center;
+    color: #DCDCDC; /* Gainsboro */
+}
+
+.empty-day {
+    visibility: hidden;
+}
+
+.calendar-day, .week-day {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #DCDCDC; /* Gainsboro */
+    border-radius: 5px;
+    font-size: 0.9rem; /* Ajusta o tamanho da fonte */
+}
+
+.work-day {
+    background-color: red;
+    color: white;
+}
+
+.off-day {
+    background-color: green;
+    color: white;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #000000; /* Black */
+    color: white;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .month-section {
+        min-height: 300px; /* Ajusta altura para smartphones */
+    }
+
+    .calendar-day, .week-day {
+        padding: 8px; /* Reduz o padding para telas menores */
+        font-size: 0.8rem; /* Diminui a fonte em telas menores */
+    }
+
+    #carousel-controls button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+}
