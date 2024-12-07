@@ -24,6 +24,8 @@ main {
     padding: 15px;
     background-color: #363636; /* Grey21 */
     border-radius: 10px;
+    max-width: 600px; /* Limita a largura no desktop */
+    margin: 0 auto; /* Centraliza o formulário */
 }
 
 label {
@@ -59,6 +61,7 @@ button:hover {
     display: flex;
     gap: 20px;
     align-items: center;
+    justify-content: center; /* Centraliza a legenda */
 }
 
 .legend-item {
@@ -88,6 +91,8 @@ button:hover {
     padding: 15px;
     background-color: #363636; /* Grey21 */
     border-radius: 10px;
+    max-width: 900px; /* Limita a largura do calendário */
+    margin: 0 auto; /* Centraliza o calendário */
 }
 
 #carousel-controls {
@@ -136,19 +141,22 @@ button:hover {
 .month-section h3 {
     color: #DCDCDC; /* Gainsboro */
     text-align: center;
+    font-size: 1.5rem; /* Aumenta o tamanho do título */
     margin-bottom: 10px;
 }
 
 .month-calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* Garante 7 colunas uniformes */
-    gap: 5px; /* Espaçamento entre as células */
+    gap: 10px; /* Aumenta o espaçamento entre as células */
+    justify-items: center; /* Centraliza os itens dentro do grid */
 }
 
 .week-day {
     font-weight: bold;
     text-align: center;
     color: #DCDCDC; /* Gainsboro */
+    font-size: 1rem; /* Ajusta o tamanho da fonte */
 }
 
 .empty-day {
@@ -156,11 +164,11 @@ button:hover {
 }
 
 .calendar-day, .week-day {
-    padding: 10px;
+    padding: 15px; /* Aumenta o espaço dentro das células */
     text-align: center;
     border: 1px solid #DCDCDC; /* Gainsboro */
     border-radius: 5px;
-    font-size: 0.9rem; /* Ajusta o tamanho da fonte */
+    font-size: 1rem; /* Ajusta o tamanho da fonte */
 }
 
 .work-day {
@@ -179,6 +187,9 @@ footer {
     padding: 10px;
     background-color: #000000; /* Black */
     color: white;
+    font-size: 1rem;
+    border-top: 1px solid #DCDCDC; /* Linha para destacar o rodapé */
+    margin-top: 20px;
 }
 
 /* Responsividade */
@@ -188,12 +199,16 @@ footer {
     }
 
     .calendar-day, .week-day {
-        padding: 8px; /* Reduz o padding para telas menores */
-        font-size: 0.8rem; /* Diminui a fonte em telas menores */
+        padding: 10px; /* Ajusta o padding para telas menores */
+        font-size: 0.8rem; /* Reduz o tamanho da fonte em smartphones */
     }
 
     #carousel-controls button {
         font-size: 0.9rem;
         padding: 8px 15px;
+    }
+
+    .form-section, .calendar-section {
+        padding: 10px; /* Reduz padding em dispositivos menores */
     }
 }
