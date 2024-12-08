@@ -91,8 +91,9 @@ button:hover {
     padding: 15px;
     background-color: #363636; /* Grey21 */
     border-radius: 10px;
-    max-width: 900px; /* Limita a largura do calendário */
+    max-width: 1000px; /* Limita a largura máxima */
     margin: 0 auto; /* Centraliza o calendário */
+    overflow-x: hidden; /* Remove o estouro horizontal */
 }
 
 #carousel-controls {
@@ -148,7 +149,7 @@ button:hover {
 .month-calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* Garante 7 colunas uniformes */
-    gap: 10px; /* Aumenta o espaçamento entre as células */
+    gap: 5px; /* Espaçamento entre as células */
     justify-items: center; /* Centraliza os itens dentro do grid */
 }
 
@@ -164,12 +165,15 @@ button:hover {
 }
 
 .calendar-day, .week-day {
-    padding: 15px; /* Aumenta o espaço dentro das células */
+    padding: 10px; /* Ajusta o espaço dentro das células */
     text-align: center;
     border: 1px solid #DCDCDC; /* Gainsboro */
     border-radius: 5px;
     font-size: 1rem; /* Ajusta o tamanho da fonte */
-    min-width: 40px; /* Garante uma largura mínima para as células */
+    width: 100%; /* Garante que todas as células tenham o mesmo tamanho */
+    max-width: 50px; /* Limita a largura máxima */
+    min-width: 40px; /* Define uma largura mínima */
+    height: 40px; /* Define uma altura fixa */
 }
 
 .work-day {
@@ -200,17 +204,18 @@ footer {
     }
 
     .month-calendar {
-        gap: 5px; /* Reduz o espaçamento entre células no mobile */
+        grid-template-columns: repeat(7, 1fr); /* Garante 7 colunas no mobile */
+        gap: 3px; /* Reduz o espaçamento entre células */
     }
 
     .calendar-day, .week-day {
-        padding: 10px; /* Ajusta o padding para telas menores */
+        padding: 5px; /* Ajusta o padding para telas menores */
         font-size: 0.8rem; /* Reduz o tamanho da fonte em smartphones */
     }
 
     #carousel-controls button {
-        font-size: 0.9rem;
-        padding: 8px 15px;
+        font-size: 0.8rem;
+        padding: 5px 10px;
     }
 
     .form-section, .calendar-section {
