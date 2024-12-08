@@ -91,7 +91,7 @@ button:hover {
     padding: 15px;
     background-color: #363636; /* Grey21 */
     border-radius: 10px;
-    max-width: 900px; /* Limita a largura máxima */
+    max-width: 400px; /* Limita a largura para telas pequenas */
     margin: 0 auto; /* Centraliza o calendário */
     overflow-x: hidden; /* Remove o estouro horizontal */
 }
@@ -149,7 +149,7 @@ button:hover {
 .month-calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* Garante 7 colunas uniformes */
-    gap: 5px; /* Espaçamento entre as células */
+    gap: 3px; /* Reduz o espaçamento entre as células */
     justify-items: center; /* Centraliza os itens dentro do grid */
     width: 100%; /* Garante que o grid ocupe a largura total */
 }
@@ -166,14 +166,13 @@ button:hover {
 }
 
 .calendar-day, .week-day {
-    padding: 10px; /* Ajusta o espaço dentro das células */
+    padding: 5px; /* Ajusta o espaço dentro das células */
     text-align: center;
     border: 1px solid #DCDCDC; /* Gainsboro */
     border-radius: 5px;
-    font-size: 1rem; /* Ajusta o tamanho da fonte */
+    font-size: 0.9rem; /* Ajusta o tamanho da fonte */
     width: 100%; /* Garante que todas as células tenham o mesmo tamanho */
-    max-width: 50px; /* Limita a largura máxima */
-    min-width: 40px; /* Define uma largura mínima */
+    max-width: 40px; /* Limita a largura máxima */
     height: 40px; /* Define uma altura fixa */
 }
 
@@ -199,27 +198,25 @@ footer {
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
-    .month-section {
-        min-height: 300px; /* Ajusta altura para smartphones */
+@media (max-width: 390px) { /* Ajustado para iPhone 12 Pro */
+    .calendar-section {
+        padding: 10px; /* Reduz padding para telas menores */
+        max-width: 100%; /* Ocupa toda a largura */
     }
 
     .month-calendar {
-        grid-template-columns: repeat(7, 1fr); /* Garante 7 colunas no mobile */
-        gap: 3px; /* Reduz o espaçamento entre células */
+        grid-template-columns: repeat(7, 1fr); /* Mantém 7 colunas */
+        gap: 2px; /* Reduz o espaçamento no grid */
     }
 
     .calendar-day, .week-day {
-        padding: 5px; /* Ajusta o padding para telas menores */
-        font-size: 0.8rem; /* Reduz o tamanho da fonte em smartphones */
+        font-size: 0.7rem; /* Reduz o tamanho da fonte em telas menores */
+        padding: 4px; /* Ajusta o padding para telas pequenas */
+        max-width: 30px; /* Reduz a largura máxima */
+        height: 30px; /* Reduz a altura para caber melhor */
     }
 
-    #carousel-controls button {
-        font-size: 0.8rem;
-        padding: 5px 10px;
-    }
-
-    .form-section, .calendar-section {
-        padding: 10px; /* Reduz padding em dispositivos menores */
+    footer {
+        font-size: 0.8rem; /* Reduz o tamanho da fonte do rodapé */
     }
 }
