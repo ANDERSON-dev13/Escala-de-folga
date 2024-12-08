@@ -91,7 +91,7 @@ button:hover {
     padding: 15px;
     background-color: #363636; /* Grey21 */
     border-radius: 10px;
-    max-width: 1000px; /* Limita a largura máxima */
+    max-width: 900px; /* Limita a largura máxima */
     margin: 0 auto; /* Centraliza o calendário */
     overflow-x: hidden; /* Remove o estouro horizontal */
 }
@@ -151,6 +151,7 @@ button:hover {
     grid-template-columns: repeat(7, 1fr); /* Garante 7 colunas uniformes */
     gap: 5px; /* Espaçamento entre as células */
     justify-items: center; /* Centraliza os itens dentro do grid */
+    width: 100%; /* Garante que o grid ocupe a largura total */
 }
 
 .week-day {
