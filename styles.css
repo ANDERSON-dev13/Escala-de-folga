@@ -169,6 +169,7 @@ button:hover {
     border: 1px solid #DCDCDC; /* Gainsboro */
     border-radius: 5px;
     font-size: 1rem; /* Ajusta o tamanho da fonte */
+    min-width: 40px; /* Garante uma largura mínima para as células */
 }
 
 .work-day {
@@ -196,6 +197,10 @@ footer {
 @media (max-width: 768px) {
     .month-section {
         min-height: 300px; /* Ajusta altura para smartphones */
+    }
+
+    .month-calendar {
+        gap: 5px; /* Reduz o espaçamento entre células no mobile */
     }
 
     .calendar-day, .week-day {
