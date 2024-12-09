@@ -11,7 +11,7 @@ function generateScale() {
 
     const [workDays, offDays] = scale.split('x').map(Number);
     const calendarCarousel = document.getElementById('calendar-carousel');
-    calendarCarousel.innerHTML = ''; // Limpa o conteúdo atual do carrossel
+    calendarCarousel.innerHTML = ''; // Limpa os meses anteriores
 
     const monthNames = [
         "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
@@ -20,12 +20,20 @@ function generateScale() {
 
     const weekDays = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"];
 
-    for (let month = 0; month < 12; month++) {
+    // Gerar 24 meses (2 anos) ao redor da data inicial
+    const monthsToGenerate = 24;
+    const firstMonth = startDate.getMonth();
+    const firstYear = startDate.getFullYear();
+
+    for (let i = 0; i < monthsToGenerate; i++) {
+        const currentMonth = (firstMonth + i) % 12;
+        const currentYear = firstYear + Math.floor((firstMonth + i) / 12);
+
         const monthSection = document.createElement('div');
         monthSection.classList.add('month-section');
 
         const monthTitle = document.createElement('h3');
-        monthTitle.textContent = monthNames[month];
+        monthTitle.textContent = `${monthNames[currentMonth]} ${currentYear}`;
         monthSection.appendChild(monthTitle);
 
         const monthCalendar = document.createElement('div');
@@ -40,18 +48,19 @@ function generateScale() {
         });
 
         // Adiciona os dias do mês
-        const currentDate = new Date(startDate.getFullYear(), month, 1);
-        const firstDay = currentDate.getDay(); // Dia da semana do primeiro dia do mês (0 = Domingo)
-        const offset = (firstDay === 0 ? 6 : firstDay - 1); // Ajuste para começar em "Segunda"
+        const currentDate = new Date(currentYear, currentMonth, 1);
+        const firstDay = currentDate.getDay(); // Dia da semana do primeiro dia do mês
+        const offset = (firstDay === 0 ? 6 : firstDay - 1); // Ajusta para começar em "Segunda"
 
         // Espaços vazios para alinhamento do calendário
-        for (let i = 0; i < offset; i++) {
+        for (let j = 0; j < offset; j++) {
             const emptyDiv = document.createElement('div');
             emptyDiv.classList.add('empty-day');
             monthCalendar.appendChild(emptyDiv);
         }
 
-        while (currentDate.getMonth() === month) {
+        // Preenche os dias do mês com base na escala
+        while (currentDate.getMonth() === currentMonth) {
             const dayDiv = document.createElement('div');
             dayDiv.classList.add('calendar-day');
             dayDiv.textContent = currentDate.getDate();
@@ -73,35 +82,50 @@ function generateScale() {
         calendarCarousel.appendChild(monthSection);
     }
 
-    initializeCarousel();
+    initializeCarousel(firstMonth, firstYear);
 }
 
-function initializeCarousel() {
+// Função para inicializar o carrossel e mostrar o mês correto
+function initializeCarousel(startMonth, startYear) {
     const carousel = document.getElementById('calendar-carousel');
     const months = document.querySelectorAll('.month-section');
     let currentIndex = 0;
+
+    const monthNames = [
+        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+        "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+    ];
+
+    // Localiza o índice do mês inicial correto
+    for (let i = 0; i < months.length; i++) {
+        const [monthName, year] = months[i].querySelector('h3').textContent.split(' ');
+        if (monthName === monthNames[startMonth] && parseInt(year) === startYear) {
+            currentIndex = i;
+            break;
+        }
+    }
 
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
     function updateCarousel() {
-        const offset = -currentIndex * carousel.offsetWidth; // Cada mês ocupa 100% da largura do container
-        carousel.style.transform = `translateX(${offset}px)`;
+        const offset = -currentIndex * 100; // Cada mês ocupa 100% da largura
+        carousel.style.transform = `translateX(${offset}%)`;
     }
 
-    prevBtn.addEventListener('click', () => {
+    prevBtn.onclick = () => {
         if (currentIndex > 0) {
             currentIndex--;
             updateCarousel();
         }
-    });
+    };
 
-    nextBtn.addEventListener('click', () => {
+    nextBtn.onclick = () => {
         if (currentIndex < months.length - 1) {
             currentIndex++;
             updateCarousel();
         }
-    });
+    };
 
-    updateCarousel(); // Inicializa a posição
+    updateCarousel(); // Inicializa no mês pesquisado
 }
